@@ -91,7 +91,7 @@
               <label class="form-label text-muted mb-1">Phone</label>
               <p v-if="!editMode" class="mb-0">
                 <a :href="`tel:${currentCustomer.phone}`" class="text-decoration-none">
-                  {{ formatPhoneNumber(currentCustomer.phone) }}
+                  {{ currentCustomer.phone }}
                 </a>
               </p>
               <input v-else v-model="editableCustomer.phone" class="form-control" />
@@ -222,10 +222,6 @@ export default {
           console.error(e)
           this.message = 'Failed to delete customer'
         })
-    },
-    formatPhoneNumber(phone) {
-      if (!phone) return ''
-      return phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
     }
   },
   mounted() {
